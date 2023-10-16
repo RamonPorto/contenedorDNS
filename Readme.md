@@ -2,7 +2,7 @@ Práctica contenedorDNS
 
 # 1. Primero Creamos el docker-compose.yml
 
-Fichero docker-compose.yml:
+***Fichero docker-compose.yml:***
 ~~~
 
 services:
@@ -24,6 +24,8 @@ networks:
 
 ~~~
 
+Primero crearemos el docker compose para poder crear el contenedor del servidor
+
 # 2. Después creamos la red "bind9_subnet"
 
 Comando para crear la red:
@@ -37,6 +39,8 @@ $ docker network create \
   bind9_subnet
 
 ~~~
+
+Posteriormente creamos la subred mencionada en el docker compose.
 
 # 3.Creación del directorio conf y sus archivos correspondientes.
 
@@ -118,6 +122,8 @@ options {
 
 ~~~
 
+Creamos el directorio "conf" al que hacemos referencia en el docker compose y creamos los ficheros de configuración
+
 # 4. Creación del directorio zonas y el fichero db.asircastelao.int
 
 ***Fichero db.asircastelao.int:***
@@ -139,4 +145,18 @@ texto	IN TXT		mensaje
 
 ~~~
 
+
+
 *Todos estos ficheros se encuentran en el repositorio de la práctica en github.*
+
+# 5. Prueba de que funciona correctamente
+
+Para confirmar que está creado correctamente debemos instalar la herramienta dig en el contenedor con los siguientes comandos:
+
+~~~
+
+apt update
+
+apt install dnsutils
+
+~~~
