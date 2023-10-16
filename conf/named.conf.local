@@ -1,0 +1,7 @@
+zone "asircastelao.int" {
+	type master;
+	file "/var/lib/bind/db.asircastelao.int";
+	allow-query {
+		any;
+		};
+	};
