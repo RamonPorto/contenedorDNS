@@ -40,7 +40,7 @@ $ docker network create \
 
 # 3.Creación del directorio conf y sus archivos correspondientes.
 
-Fichero named.conf:
+***Fichero named.conf:***
 ~~~
 
 include "/etc/bind/named.conf.options";
@@ -49,7 +49,7 @@ include "/etc/bind/named.conf.default-zones";
 
 ~~~
 
-Fichero named.conf.default-zones
+***Fichero named.conf.default-zones:***
 ~~~
 
 // prime the server with knowledge of the root servers
@@ -83,7 +83,7 @@ zone "255.in-addr.arpa" {
 
 ~~~
 
-Fichero named.conf.local
+***Fichero named.conf.local:***
 ~~~
 
 zone "asircastelao.int" {
@@ -96,7 +96,7 @@ zone "asircastelao.int" {
 
 ~~~
 
-Fichero named.conf.options
+***Fichero named.conf.options:***
 ~~~
 
 options {
@@ -120,7 +120,7 @@ options {
 
 # 4. Creación del directorio zonas y el fichero db.asircastelao.int
 
-Fichero db.asircastelao.int:
+***Fichero db.asircastelao.int:***
 ~~~
 
 $TTL 38400	; 10 hours 40 minutes
