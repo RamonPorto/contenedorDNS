@@ -1,0 +1,18 @@
+services:
+  asir_bind9:
+    container_name: asir_bind9
+    image: ubuntu/bind9
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      #Mapeo de puertos
+    networks:
+      bind9_subnet:
+        ipv4_address: 172.28.5.1
+    volumes:
+      - ./conf:/etc/bind
+      - ./zonas:/var/lib/bind
+      #Para mapear los directorios
+networks:
+  bind9_subnet:
+    external: true
