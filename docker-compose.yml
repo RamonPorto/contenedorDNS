@@ -15,12 +15,15 @@ services:
       #Para mapear los directorios
   cliente:
     container_name: asir_cliente_dns
-    image: alpine
+    image: ubuntu
     platform: linux/amd64
     tty: true
     stdin_open: true
+    dns:
+      - 172.28.5.1
     networks:
-      - bind9_subnet
+      bind9_subnet:
+        ipv4_address: 172.28.5.33
 networks:
   bind9_subnet:
     external: true
