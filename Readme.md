@@ -212,3 +212,15 @@ docker compose -f docker-compose.yml up
 ~~~
 
 *Agregamos -f para indicar el fichero docker-compose que queremos ejecutar*
+
+# 8.Comprobación
+
+Comprobaremos que funciona entrando a la máquina cliente y haciendo encuestas con el comando dig para ver si el servidor correctamente.
+
+*Sintaxis del comando:*
+
+~~~
+
+dig 172.28.5.1 www.asircastelao.int
+
+~~~
