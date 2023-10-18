@@ -160,3 +160,55 @@ apt update
 apt install dnsutils
 
 ~~~
+
+# 6. Creación del cliente
+
+Para crear el cliente los debemos añadir en el archivo docker-compose.yml
+
+Nuestro fichero debería ser el siguiente:
+
+~~~
+
+services:
+  asir_bind9:
+    container_name: asir_bind9
+    image: ubuntu/bind9
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      #Mapeo de puertos
+    networks:
+      bind9_subnet:
+        ipv4_address: 172.28.5.1
+    volumes:
+      - ./conf:/etc/bind
+      - ./zonas:/var/lib/bind
+      #Para mapear los directorios
+  cliente:
+    container_name: asir_cliente_dns
+    image: alpine
+    platform: linux/amd64
+    tty: true
+    stdin_open: true
+    dns:
+      - 172.28.5.1
+    networks:
+      bind9_subnet:
+        ipv4_address: 172.28.5.33
+networks:
+  bind9_subnet:
+    external: true
+
+~~~
+
+# 7.Creación de los contenedores
+
+Para crear ambos contenedores deberemos volver a ejecutar el archivo docker-compose con el siguiente comando:
+
+~~~
+
+docker compose -f docker-compose.yml up
+
+~~~
+
+*Agregamos -f para indicar el fichero docker-compose que queremos ejecutar*
